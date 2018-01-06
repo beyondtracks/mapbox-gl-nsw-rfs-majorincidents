@@ -108,27 +108,21 @@ MapboxGLNSWRFSMajorIncidents.prototype = {
                     },
                     filter: ["==", "$type", "Point"]
                 });
-            });
-            self._map.addLayer({
-                id: '_nswrfsmajorincidents-symbol-selected',
-                source: '_nswrfsmajorincidents',
-                type: 'circle',
-                paint: {
-                    "circle-opacity": 0,
-                    "circle-stroke-color": "blue",
-                    "circle-radius": 14,
-                    "circle-stroke-width": 4,
-                    "circle-stroke-opacity": 0.8
-                },
-                filter: ["all", ["==", "$type", "Point"], ["==", "guid", ""]]
-            });
 
-            /* instead of using 4 different layers with these filters we use the complicated expression above instead
-            self._addSymbolLayer('non-fire', ["==", "fire", false]);
-            self._addSymbolLayer('under-control', ["all", ["==", "fire", true], ["==", "status", "Under control"]]);
-            self._addSymbolLayer('being-controlled', ["all", ["==", "fire", true], ["==", "status", "Being controlled"]]);
-            self._addSymbolLayer('out-of-control', ["all", ["==", "fire", true], ["==", "status", "Out of control"]]);
-            */
+                self._map.addLayer({
+                    id: '_nswrfsmajorincidents-symbol-selected',
+                    source: '_nswrfsmajorincidents',
+                    type: 'circle',
+                    paint: {
+                        "circle-opacity": 0,
+                        "circle-stroke-color": "blue",
+                        "circle-radius": 14,
+                        "circle-stroke-width": 4,
+                        "circle-stroke-opacity": 0.8
+                    },
+                    filter: ["all", ["==", "$type", "Point"], ["==", "guid", ""]]
+                });
+            });
 
             // open popup on click, since we don't want two popups when clicking over both the symbol and fill, we can't limit the on to a specific layer
             self._map.on('click', function (e) {
