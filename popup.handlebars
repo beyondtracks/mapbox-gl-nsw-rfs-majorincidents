@@ -1,0 +1,63 @@
+<div class="nsw-rfs-majorincident-popup">
+    <h4>{{title}}</h4>
+    <div class="row">
+        <div class="alert-box info-box">
+            <span class="key">Alert Level</span>
+            <br>
+            <span class="fa-stack fa-3x">
+                <i class="info-icon fa fa-square fa-stack-2x text-{{alert-level-color}}"></i>
+                <i class="info-icon oc-fire-station fa-stack-1x fa-inverse"></i>
+            </span>
+            <br>
+            <span class="text-{{alert-level-color}} box-label">{{alert-level}}</span>
+        </div>
+        <div class="status-box info-box" data-toggle="tooltip" title="{{status-tooltip}}">
+            <span class="key">Status</span>
+            <br>
+            <span class="fa-stack fa-3x">
+                <i class="info-icon fa fa-square fa-stack-2x text-{{status-color}}"></i>
+                <i class="info-icon oc-fire-station fa-stack-1x fa-inverse"></i>
+            </span>
+            <br>
+            <span class="text-{{status-color}} box-label">{{status}}</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-condensed table-striped">
+                <tbody>
+                    <tr>
+                        <td class="key">Type</td>
+                        <td>{{type}}</td>
+                    </tr>
+
+                    <tr>
+                        <td class="key">Fire</td>
+                        <td>{{#if fire}}Yes{{else}}No{{/if}}</td>
+                    </tr>
+
+                    <tr>
+                        <td class="key">Size</td>
+                        <td>{{size}}</td>
+                    </tr>
+
+                    <tr>
+                        <td class="key">Responsible <br>Agency</td>
+                        <td>{{&responsible-agency}}</td>
+                    </tr>
+
+                    <tr>
+                        <td class="key">Last Updated</td>
+                        <td>
+                            {{current-as-of-ago}}<br>
+                            <small>({{current-as-of}})</small>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="attribution">
+        <span><small>Based on information from <a target="_blank" href="http://www.rfs.nsw.gov.au/fire-information/fires-near-me">NSW RFS Current Incidents</a></small></span>
+    </div>
+</div>

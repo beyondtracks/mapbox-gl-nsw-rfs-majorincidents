@@ -5,6 +5,23 @@ var fs = require('fs');
 mapboxgl.accessToken = window.localStorage.getItem('MapboxAccessToken');
 
 insertCss(fs.readFileSync('./node_modules/mapbox-gl/dist/mapbox-gl.css', 'utf8'));
+insertCss(fs.readFileSync('dist/mapbox-gl-nsw-rfs-majorincidents.css', 'utf8'));
+
+function addCss(fileName) {
+
+    var head = document.head
+    var link = document.createElement("link")
+
+    link.type = "text/css"
+    link.rel = "stylesheet"
+    link.href = fileName
+
+    head.appendChild(link)
+}
+
+addCss('./node_modules/bootstrap/dist/css/bootstrap.min.css');
+addCss('./node_modules/font-awesome/css/font-awesome.min.css');
+addCss('./node_modules/osmic/font/osmic.css');
 
 var MapboxGLNSWRFSMajorIncidents = require('./');
 

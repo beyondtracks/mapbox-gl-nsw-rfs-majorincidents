@@ -7,6 +7,9 @@ const turf = {
     bbox: require('@turf/bbox')
 };
 
+const popupTemplate = require('./popup.handlebars');
+const moment = require('moment');
+
 /**
  * A NSW RFS Major Incidents Layer for Mapbox GL
  * @class MapboxGLNSWRFSMajorIncidents
@@ -173,9 +176,10 @@ MapboxGLNSWRFSMajorIncidents.prototype = {
                             default:
                                 return;
                         }
+                        var templateData = self._extraTemplateData(features[0].properties);
                         new mapboxgl.Popup(options)
                             .setLngLat(lngLat)
-                            .setHTML(features[0].properties.title)
+                            .setHTML(popupTemplate(features[0].properties))
                             .addTo(self._map)
                             .on('close', function () {
                                 if (self._selected == null) {
@@ -216,7 +220,59 @@ MapboxGLNSWRFSMajorIncidents.prototype = {
         this.container.parentNode.removeChild(this.container);
         this._map = null;
         return this;
+    },
+
+    _extraTemplateData: function (d) {
+        d['alert-level-color'] = alertLevelToClass(d['alert-level']);
+        d['status-color'] = statusToClass(d['status']);
+
+        //d['alert-level-tooltip'] = alertLevelTooltip(d['alert-level']);
+        //d['status-tooltip'] = statusTooltip(d['status']);
+
+        var currentAsOfFormatString = "DD/MM/YYYY hh:mm:ss A";
+        d['current-as-of'] = moment(d['pub-date']).calendar(),
+        d['current-as-of-ago'] = moment(d['pub-date']).fromNow()
+
+        return d;
     }
 };
+
+/* set bootstrap text class's according to incident alert level */
+function alertLevelToClass(alertValue) {
+    switch (alertValue) {
+        case 'Emergency Warning':
+            return 'danger';
+            break;
+        case 'Watch and Act':
+            return 'warning';
+            break;
+        case 'Advice':
+            return 'info';
+            break;
+        case 'Not Applicable':
+            return 'muted';
+            break;
+        default:
+            return '';
+    }
+}
+
+/* set bootstrap text class's according to incident status */
+function statusToClass(statusValue) {
+    switch (statusValue) {
+        case 'Out of Control':
+            return 'danger';
+            break;
+        case 'Being Controlled':
+            return 'warning';
+            break;
+        case 'Under Control':
+            return 'info';
+            break;
+        default:
+            return '';
+    }
+}
+
 
 module.exports = MapboxGLNSWRFSMajorIncidents;

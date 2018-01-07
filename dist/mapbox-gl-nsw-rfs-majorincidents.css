@@ -1,0 +1,46 @@
+.mapboxgl-popup-content {
+    box-shadow: 0 3px 14px rgba(0,0,0,0.4);
+    color: #333;
+    border-radius: 12px;
+}
+
+.nsw-rfs-majorincident-popup {
+    line-height: 1.0;
+    max-width: 300px;
+}
+.nsw-rfs-majorincident-popup h4 {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+.nsw-rfs-majorincident-popup .info-box {
+    text-align: center;
+    padding: 10px;
+}
+
+/* put one box on the left and one on the right */
+.nsw-rfs-majorincident-popup .alert-box {
+    width: 50%;
+    float: left;
+}
+.nsw-rfs-majorincident-popup .status-box {
+    width: 50%;
+    float: right;
+}
+
+/* text-value for the info-box's */
+.nsw-rfs-majorincident-popup .box-label {
+    font-weight: bold;
+    font-size: 125%;
+}
+
+/* properties table */
+.nsw-rfs-majorincident-popup .key {
+    font-weight: bold;
+}
+.nsw-rfs-majorincident-popup .key:after {
+    content: ": ";
+}
+.nsw-rfs-majorincident-popup .attribution {
+    text-align: center;
+}
