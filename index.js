@@ -15,7 +15,7 @@ const moment = require('moment');
  * @class MapboxGLNSWRFSMajorIncidents
  *
  * @param {Object} options
- * @param {String} [options.url=https://www.beyondtracks.com/contrib/nsw-rfs-majorincidents.geojson] URL to the NSW RFS Major Incidents feed
+ * @param {String} [options.url=https://www.beyondtracks.com/contrib/nsw-rfs-majorincidents.geojson] URL to the NSW RFS Major Incidents feed as processed by https://github.com/beyondtracks/nsw-rfs-majorincidents-geojson
  * @example
  * var nswRFSMajorIncidents = new MapboxGLNSWRFSMajorIncidents();
  * map.addControl(nswRFSMajorIncidents);
